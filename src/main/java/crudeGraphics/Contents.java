@@ -1,32 +1,40 @@
 package crudeGraphics;
 
-import worldMap.WorldMapPainter;
-
-import java.awt.*;
-import javax.swing.*;
+import java.util.Objects;
+import java.util.List;
+import java.util.ArrayList;
+import java.awt.Graphics;
+import java.awt.Color;
+import java.awt.image.ImageObserver;
+import javax.swing.JPanel;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class Contents extends JPanel {
-    private final @NotNull WorldMapPainter worldMapPainter;
-    private final @NotNull RegionPainter regionPainter;
-    private final @NotNull GroundTrackPainter groundTrackPainter;
+    private final @NotNull List<@Nullable AbstractStaticPainter> staticPainters;
 
-    public Contents() {
+    public Contents(@Nullable List<@Nullable AbstractStaticPainter> staticPainters) {
         setBackground(Color.black);
         setOpaque(true);
-        worldMapPainter = new WorldMapPainter();
-        regionPainter = new RegionPainter();
-        groundTrackPainter = new GroundTrackPainter();
+        this.staticPainters = Objects.requireNonNullElse(staticPainters, new ArrayList<>());
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         int @NotNull [] drawSize = getDrawSize();
-        worldMapPainter.paintMap(g, this, drawSize);
-        regionPainter.paintRegions(g, drawSize);
-        groundTrackPainter.paintGroundTracks(g, drawSize);
+        paintPainters(g, this, drawSize);
+    }
+
+    private void paintPainters(@NotNull Graphics g,
+                               @NotNull ImageObserver observer,
+                               int @NotNull [] drawSize) {
+        for (@Nullable AbstractStaticPainter painter : staticPainters) {
+            if (painter != null) {
+                painter.paint(g, observer, drawSize);
+            }
+        }
     }
 
     private int @NotNull [] getDrawSize() {

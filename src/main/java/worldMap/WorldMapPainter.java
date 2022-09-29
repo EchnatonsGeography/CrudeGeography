@@ -3,7 +3,8 @@ package worldMap;
 import crudeGraphics.AbstractStaticPainter;
 
 import java.io.IOException;
-import java.awt.*;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.image.ImageObserver;
 
 import org.jetbrains.annotations.NotNull;
@@ -24,10 +25,17 @@ public class WorldMapPainter extends AbstractStaticPainter {
         worldMap = new WorldMap(projection);
     }
 
-    //TODO: add javadoc
-    public void paintMap(@NotNull Graphics g,
-                         @NotNull ImageObserver observer,
-                         int @NotNull [] drawSize) {
+    /**
+     * Paints a static map of the world.
+     *
+     * @param g        Graphics to use.
+     * @param observer ImageObserver object.
+     * @param drawSize Drawable size {height, width}.
+     */
+    @Override
+    public void paint(@NotNull Graphics g,
+                      @NotNull ImageObserver observer,
+                      int @NotNull [] drawSize) {
         try {
             Image resizedMap = worldMap.getImage().getScaledInstance(
                     drawSize[0], drawSize[1],

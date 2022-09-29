@@ -5,18 +5,30 @@ import geography.Location;
 import geography.particularLocations.Riga;
 import geography.particularLocations.GuianaSpaceCenter;
 
-import java.awt.*;
+import java.awt.Graphics;
+import java.awt.Color;
+import java.awt.image.ImageObserver;
 
 import org.jetbrains.annotations.NotNull;
 
-class GroundTrackPainter extends AbstractStaticPainter {
+public class GroundTrackPainter extends AbstractStaticPainter {
     private static final int COMMON_OPACITY = 190;
 
-    GroundTrackPainter() {
+    public GroundTrackPainter() {
         super();
     }
 
-    protected void paintGroundTracks(Graphics g, int @NotNull [] drawSize) {
+    /**
+     * Paints static ground tracks.
+     *
+     * @param g        Graphics to use.
+     * @param observer ImageObserver object.
+     * @param drawSize Drawable size {height, width}.
+     */
+    @Override
+    public void paint(@NotNull Graphics g,
+                      @NotNull ImageObserver observer,
+                      int @NotNull [] drawSize) {
         g.setColor(new Color(20, 255, 20, COMMON_OPACITY));
         drawGroundTrack(g, drawSize, new Riga());
         drawGroundTrack(g, drawSize, new Location(
@@ -32,7 +44,9 @@ class GroundTrackPainter extends AbstractStaticPainter {
         drawGroundTrack(g, drawSize, new GuianaSpaceCenter());
     }
 
-    private void drawGroundTrack(Graphics g, int @NotNull [] drawSize, @NotNull Location start) {
+    private void drawGroundTrack(@NotNull Graphics g,
+                                 int @NotNull [] drawSize,
+                                 @NotNull Location start) {
         double @NotNull [] startCoordinates = start.getCoordinates();
         int dataPoints = 200;
         double deltaFi = 2 * Math.PI / dataPoints;
@@ -47,7 +61,8 @@ class GroundTrackPainter extends AbstractStaticPainter {
         }
     }
 
-    private void drawSinglePoint(Graphics g, int @NotNull [] location) {
+    private void drawSinglePoint(@NotNull Graphics g,
+                                 int @NotNull [] location) {
         int ovalSize = 6;
         g.fillOval(
                 (int) (location[0] - ovalSize / 2.0),

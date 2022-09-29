@@ -8,12 +8,15 @@ import java.util.List;
 import java.util.ArrayList;
 import java.awt.Graphics;
 import java.awt.Color;
+import java.awt.image.ImageObserver;
 
-class RegionPainter extends AbstractStaticPainter {
+import org.jetbrains.annotations.NotNull;
+
+public class RegionPainter extends AbstractStaticPainter {
     private static final int COMMON_OPACITY = 150;
     private final List<RegionDrawInfo> regionDrawInfo;
 
-    RegionPainter() {
+    public RegionPainter() {
         super();
         regionDrawInfo = new ArrayList<>() {{
             add(new RegionDrawInfo(new SampleRegion(), 0, false));
@@ -25,7 +28,17 @@ class RegionPainter extends AbstractStaticPainter {
         }};
     }
 
-    void paintRegions(Graphics g, int[] drawSize) {
+    /**
+     * Paints various regions.
+     *
+     * @param g        Graphics to use.
+     * @param observer ImageObserver object.
+     * @param drawSize Drawable size {height, width}.
+     */
+    @Override
+    public void paint(@NotNull Graphics g,
+                      @NotNull ImageObserver observer,
+                      int @NotNull [] drawSize) {
         for (RegionDrawInfo regionInfo : regionDrawInfo) {
             if (regionInfo.draw) {
                 switch (regionInfo.dangerLevel) {
