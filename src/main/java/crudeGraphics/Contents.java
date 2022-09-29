@@ -1,10 +1,11 @@
 package crudeGraphics;
 
-import crudeGraphics.worldMap.WorldMapPainter;
-import org.jetbrains.annotations.NotNull;
+import worldMap.WorldMapPainter;
 
-import javax.swing.*;
 import java.awt.*;
+import javax.swing.*;
+
+import org.jetbrains.annotations.NotNull;
 
 public class Contents extends JPanel {
     private final @NotNull WorldMapPainter worldMapPainter;

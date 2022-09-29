@@ -1,4 +1,4 @@
-package crudeGraphics.worldMap;
+package worldMap;
 
 //TODO: add javadoc
 public enum ProjectionType {

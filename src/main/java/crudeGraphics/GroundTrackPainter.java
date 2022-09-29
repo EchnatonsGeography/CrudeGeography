@@ -2,14 +2,19 @@ package crudeGraphics;
 
 import geography.Coordinates;
 import geography.Location;
-import geography.particularLocations.GuianaSpaceCenter;
 import geography.particularLocations.Riga;
-import org.jetbrains.annotations.NotNull;
+import geography.particularLocations.GuianaSpaceCenter;
 
 import java.awt.*;
 
-class GroundTrackPainter {
+import org.jetbrains.annotations.NotNull;
+
+class GroundTrackPainter extends AbstractStaticPainter {
     private static final int COMMON_OPACITY = 190;
+
+    GroundTrackPainter() {
+        super();
+    }
 
     protected void paintGroundTracks(Graphics g, int @NotNull [] drawSize) {
         g.setColor(new Color(20, 255, 20, COMMON_OPACITY));

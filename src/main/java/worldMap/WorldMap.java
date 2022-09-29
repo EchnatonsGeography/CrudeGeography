@@ -1,13 +1,13 @@
-package crudeGraphics.worldMap;
+package worldMap;
+
+import java.util.Objects;
+import java.io.File;
+import java.io.IOException;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.Objects;
 
 //TODO: add javadoc
 class WorldMap {

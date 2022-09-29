@@ -1,14 +1,16 @@
-package crudeGraphics.worldMap;
+package worldMap;
+
+import crudeGraphics.AbstractStaticPainter;
+
+import java.io.IOException;
+import java.awt.*;
+import java.awt.image.ImageObserver;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.awt.*;
-import java.awt.image.ImageObserver;
-import java.io.IOException;
-
 //TODO: add javadoc
-public class WorldMapPainter {
+public class WorldMapPainter extends AbstractStaticPainter {
     private final @NotNull WorldMap worldMap;
 
     //TODO: add javadoc
@@ -18,6 +20,7 @@ public class WorldMapPainter {
 
     //TODO: add javadoc
     public WorldMapPainter(@Nullable ProjectionType projection) {
+        super();
         worldMap = new WorldMap(projection);
     }
 

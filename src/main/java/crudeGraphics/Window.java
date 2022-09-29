@@ -1,14 +1,16 @@
 package crudeGraphics;
 
+import javax.swing.*;
+
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import javax.swing.*;
-
 public class Window extends JFrame {
-    private static final int[] WINDOW_SIZE_ERROR_CORRECTION = new int[] {16, 39};
+    private static final int @NotNull []
+            WINDOW_SIZE_ERROR_CORRECTION = new int[] {16, 39};
 
-    public Window(int @NotNull [] size, @Nullable Contents contents) {
+    public Window(int @NotNull [] size,
+                  @Nullable Contents contents) {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(
                 size[0] + WINDOW_SIZE_ERROR_CORRECTION[0],

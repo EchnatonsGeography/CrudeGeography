@@ -4,15 +4,17 @@ import geography.AbstractRegion;
 import geography.particularRegions.*;
 import geography.particularRegions.sampleRegion.SampleRegion;
 
-import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
+import java.awt.Graphics;
+import java.awt.Color;
 
-class RegionPainter {
+class RegionPainter extends AbstractStaticPainter {
     private static final int COMMON_OPACITY = 150;
     private final List<RegionDrawInfo> regionDrawInfo;
 
     RegionPainter() {
+        super();
         regionDrawInfo = new ArrayList<>() {{
             add(new RegionDrawInfo(new SampleRegion(), 0, false));
             add(new RegionDrawInfo(new Europe(), 0, true));
